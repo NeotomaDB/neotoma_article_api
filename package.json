@@ -1,0 +1,28 @@
+{
+  "name": "article_api",
+  "version": "0.0.0",
+  "description": "An API to interface with the Neotoma Article Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "RDS_HOSTNAME=localhost RDS_USERNAME=postgres RDS_DATABASE=neotomarelevance RDS_PASSWORD=postgres RDS_PORT=5435  TIMEOUT=10000 node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/NeotomaDB/article_api"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "crossref",
+    "Neotoma"
+  ],
+  "author": "Simon Goring",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg-promise": "^11.8.0"
+  }
+}
