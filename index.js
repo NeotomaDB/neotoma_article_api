@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const cors = require('cors');
+var bodyParser = require('body-parser')
 const dbtest = require('./database/pgp_db').dbheader;
 
 const PORT = process.env.PORT || 3000;
@@ -9,7 +10,8 @@ const app = express();
 
 // app.use(helmet());
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json({limit:'500mb'}));
+app.use(bodyParser.urlencoded({limit: '500mb', extended: true, parameterLimit: 1000000}));
 
 app.locals.db = dbtest();
 
@@ -19,15 +21,11 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-// Locations for v2.0 files
-const v0data = require('./v0/routes/routes');
+// Locations for v0 route files
+const v0data = require('./v0.1/routes/routes');
 
-// use the v1.5 endpoints:
-app.use('/', v0data);
-  
-app.all('*', function(req, res) {
-    res.redirect('/api-docs');
-});
+// use the v0.1 endpoints:
+app.use('/v0.1', v0data);
 
 app.listen(3000);
   
