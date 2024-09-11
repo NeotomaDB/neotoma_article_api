@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "RDS_HOSTNAME=localhost RDS_USERNAME=postgres RDS_DATABASE=neotomarelevance RDS_PASSWORD=postgres RDS_PORT=5435  TIMEOUT=10000 node index.js"
+    "run": "RDS_HOSTNAME=localhost RDS_USERNAME=postgres RDS_DATABASE=neotomarelevance RDS_PASSWORD=postgres RDS_PORT=5432 TIMEOUT=10000 node --watch *.js --trace-deprecation index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   "author": "Simon Goring",
   "license": "MIT",
   "dependencies": {
+    "@citation-js/core": "^0.7.14",
+    "@citation-js/plugin-csl": "^0.7.14",
+    "@citation-js/plugin-doi": "^0.7.14",
     "bluebird": "^3.7.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
